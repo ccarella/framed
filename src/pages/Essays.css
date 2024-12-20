@@ -1,0 +1,93 @@
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header {
+  padding: 2rem 1rem 0;
+  text-align: right;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.essays-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  width: 100%;
+}
+
+.essays-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.essay-item {
+  margin-bottom: 1.5rem;
+}
+
+.essay-item a {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.essay-item a:hover {
+  border-bottom-color: #333;
+}
+
+.essay-title {
+  font-size: 1.1rem;
+  margin-right: 1rem;
+}
+
+.essay-item time {
+  font-size: 0.9rem;
+  color: #666;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 1.5rem 1rem 0;
+  }
+
+  .essays-section {
+    padding-top: 2rem;
+  }
+
+  .essay-item a {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .essay-title {
+    margin-right: 0;
+  }
+
+  .essay-item time {
+    font-size: 0.85rem;
+  }
+} 

@@ -1,0 +1,109 @@
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header {
+  padding: 2rem 1rem 0;
+  text-align: right;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-label {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.projects-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  width: 100%;
+}
+
+.projects-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-item {
+  margin-bottom: 1.5rem;
+}
+
+.project-item a {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-decoration: none;
+  color: #333;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.project-item a:hover {
+  border-bottom-color: #333;
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-right: 2rem;
+  flex: 1;
+}
+
+.project-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.project-description {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.project-item time {
+  font-size: 0.9rem;
+  color: #666;
+  white-space: nowrap;
+  padding-top: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 1.5rem 1rem 0;
+  }
+
+  .projects-section {
+    padding-top: 2rem;
+  }
+
+  .project-item a {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .project-info {
+    margin-right: 0;
+  }
+
+  .project-item time {
+    font-size: 0.85rem;
+    padding-top: 0;
+  }
+} 

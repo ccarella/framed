@@ -3,6 +3,8 @@ import { scoutGameEssay } from '../content/essays/scout-game';
 import { higherCodedNetworksEssay } from '../content/essays/higher-coded-networks';
 import { nouns839Essay } from '../content/essays/nouns-839-cc0';
 import { continuousFundingEssay } from '../content/essays/continuous-funding';
+import Navigation from '../components/Navigation';
+import './Essays.css';
 
 function Essays() {
   const allEssays = [
@@ -16,23 +18,26 @@ function Essays() {
   const recentEssays = allEssays.slice(0, 3);
 
   return (
-    <main>
-      <section id="essays">
-        <h2>Essays</h2>
-        <div className="project-grid">
-          {recentEssays.map(essay => (
-            <Link key={essay.id} to={`/essays/${essay.id}`} className="project-card">
-              <h3>{essay.title}</h3>
-              {essay.subtitle && <p className="subtitle">{essay.subtitle}</p>}
-              <div className="essay-metadata">
-                <time>{essay.date}</time>
-                <span>{essay.collectors} collectors</span>
-              </div>
-            </Link>
-          ))}
+    <div className="page-container">
+      <Navigation />
+      <main>
+        <div className="page-header">
+          <span className="section-label">Essays</span>
         </div>
-      </section>
-    </main>
+        <section className="essays-section">
+          <ul className="essays-list">
+            {recentEssays.map(essay => (
+              <li key={essay.id} className="essay-item">
+                <Link to={`/essays/${essay.id}`}>
+                  <span className="essay-title">{essay.title}</span>
+                  <time>{essay.date}</time>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+    </div>
   );
 }
 

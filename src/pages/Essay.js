@@ -1,9 +1,10 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { scoutGameEssay } from '../content/essays/scout-game';
 import { higherCodedNetworksEssay } from '../content/essays/higher-coded-networks';
 import { nouns839Essay } from '../content/essays/nouns-839-cc0';
 import { continuousFundingEssay } from '../content/essays/continuous-funding';
-import ReactMarkdown from 'react-markdown';
+import Navigation from '../components/Navigation';
+import './Essay.css';
 
 function Essay() {
   const { id } = useParams();
@@ -19,58 +20,61 @@ function Essay() {
   const essay = essays[id];
 
   if (!essay) {
-    return <div>Essay not found</div>;
+    return (
+      <div className="page-container">
+        <Navigation />
+        <main>
+          <section className="essay-detail">
+            <Link to="/essays" className="back-button">← Back to Essays</Link>
+            <p>Essay not found</p>
+          </section>
+        </main>
+      </div>
+    );
   }
 
+  // Split content into paragraphs
+  const paragraphs = essay.content.trim().split('\n\n').map(p => p.trim());
+
   return (
-    <main>
-      <section className="essay-detail">
-        <button className="back-button" onClick={() => navigate('/essays')}>← Back to Essays</button>
-        <article>
-          <h1>{essay.title}</h1>
-          {essay.subtitle && <h2 className="subtitle">{essay.subtitle}</h2>}
-          <div className="essay-metadata">
-            <time>{essay.date}</time>
-            <span>By {essay.author}</span>
-            <span>{essay.collectors} collectors</span>
-            <span>Arweave TX: {essay.arweaveTx}</span>
-          </div>
-          <div className="essay-content">
-            <ReactMarkdown>{essay.content}</ReactMarkdown>
-          </div>
-          {essay.comments && essay.comments.length > 0 && (
-            <div className="essay-comments">
-              <h3>Comments</h3>
-              {essay.comments.map((comment, index) => (
-                <div key={index} className="comment">
-                  <div className="comment-metadata">
-                    <span className="comment-author">{comment.author}</span>
-                    <time>{comment.date}</time>
-                    {comment.platform && (
-                      <span className="comment-platform">via {comment.platform}</span>
-                    )}
-                  </div>
-                  <p>{comment.content}</p>
-                  {comment.reactions && (
-                    <div className="comment-reactions">
-                      {comment.reactions.likes > 0 && (
-                        <span className="reaction">❤️ {comment.reactions.likes}</span>
-                      )}
-                      {comment.reactions.recasts > 0 && (
-                        <span className="reaction">🔄 {comment.reactions.recasts}</span>
-                      )}
-                      {comment.reactions.replies > 0 && (
-                        <span className="reaction">💬 {comment.reactions.replies}</span>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
+    <div className="page-container">
+      <Navigation />
+      <main>
+        <section className="essay-detail">
+          <Link to="/essays" className="back-button">← Back to Essays</Link>
+          <article>
+            <h1>{essay.title}</h1>
+            <div className="essay-metadata">
+              <time>{essay.date}</time>
             </div>
-          )}
-        </article>
-      </section>
-    </main>
+            <div className="essay-content">
+              {paragraphs.map((paragraph, index) => {
+                // Check if the paragraph is a heading (starts with ##)
+                if (paragraph.startsWith('##')) {
+                  return <h2 key={index}>{paragraph.replace('##', '').trim()}</h2>;
+                }
+                // Check if the paragraph is a list
+                if (paragraph.includes('\n-')) {
+                  const [listTitle, ...items] = paragraph.split('\n-');
+                  return (
+                    <div key={index}>
+                      {listTitle && <p>{listTitle.trim()}</p>}
+                      <ul>
+                        {items.map((item, i) => (
+                          <li key={i}>{item.trim()}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                }
+                // Regular paragraph
+                return <p key={index}>{paragraph}</p>;
+              })}
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
   );
 }
 

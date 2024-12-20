@@ -1,26 +1,53 @@
 import { Link } from 'react-router-dom';
+import Navigation from '../components/Navigation';
+import './Projects.css';
 
 function Projects() {
+  const projects = [
+    {
+      id: 'charmverse',
+      title: 'CharmVerse',
+      description: 'A decentralized platform for discovering and supporting open source developers.',
+      date: 'September 16, 2024',
+    },
+    {
+      id: 'hypersub',
+      title: 'Hypersub',
+      description: 'NFT subscription platform for creators and collectors.',
+      date: 'August 1, 2024',
+    },
+    {
+      id: 'framed',
+      title: 'Framed',
+      description: 'Personal website and blog framework built with React.',
+      date: 'July 15, 2024',
+    }
+  ];
+
   return (
-    <main>
-      <section id="projects">
-        <h2>Projects</h2>
-        <div className="project-grid">
-          <Link to="/projects/1" className="project-card">
-            <h3>Project 1</h3>
-            <p>Description of your first project</p>
-          </Link>
-          <Link to="/projects/2" className="project-card">
-            <h3>Project 2</h3>
-            <p>Description of your second project</p>
-          </Link>
-          <Link to="/projects/3" className="project-card">
-            <h3>Project 3</h3>
-            <p>Description of your third project</p>
-          </Link>
+    <div className="page-container">
+      <Navigation />
+      <main>
+        <div className="page-header">
+          <span className="section-label">Projects</span>
         </div>
-      </section>
-    </main>
+        <section className="projects-section">
+          <ul className="projects-list">
+            {projects.map(project => (
+              <li key={project.id} className="project-item">
+                <Link to={`/projects/${project.id}`}>
+                  <div className="project-info">
+                    <span className="project-title">{project.title}</span>
+                    <span className="project-description">{project.description}</span>
+                  </div>
+                  <time>{project.date}</time>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </main>
+    </div>
   );
 }
 

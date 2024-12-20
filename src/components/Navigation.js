@@ -1,14 +1,15 @@
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+import './Navigation.css';
 
 function Navigation() {
   return (
     <header>
       <nav>
         <ul>
-          <li><a href="/#about">About</a></li>
-          <li><Link to="/essays">Essays</Link></li>
-          <li><Link to="/projects">Projects</Link></li>
-          <li><Link to="/artwork">Artwork</Link></li>
+          <li><Link to="/">About</Link></li>
+          <li><NavLink to="/essays" className={({ isActive }) => isActive ? 'active' : ''}>Essays</NavLink></li>
+          <li><NavLink to="/projects" className={({ isActive }) => isActive ? 'active' : ''}>Projects</NavLink></li>
+          <li><NavLink to="/artwork" className={({ isActive }) => isActive ? 'active' : ''}>Artwork</NavLink></li>
         </ul>
       </nav>
     </header>
