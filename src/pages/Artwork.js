@@ -4,7 +4,6 @@ function Artwork() {
   return (
     <main>
       <section id="artwork">
-        <h2>Artwork</h2>
         <div className="artwork-grid">
           <Link to="/artwork/texture" className="artwork-card">
             <div className="artwork-image">

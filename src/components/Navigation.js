@@ -6,7 +6,7 @@ function Navigation() {
     <header>
       <nav>
         <ul>
-          <li><Link to="/">About</Link></li>
+          <li><NavLink to="/" className={({ isActive }) => isActive ? 'active' : ''} end>About</NavLink></li>
           <li><NavLink to="/essays" className={({ isActive }) => isActive ? 'active' : ''}>Essays</NavLink></li>
           <li><NavLink to="/projects" className={({ isActive }) => isActive ? 'active' : ''}>Projects</NavLink></li>
           <li><NavLink to="/artwork" className={({ isActive }) => isActive ? 'active' : ''}>Artwork</NavLink></li>

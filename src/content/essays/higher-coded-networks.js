@@ -5,8 +5,6 @@ export const higherCodedNetworksEssay = {
   author: "Chris Carella",
   collectors: 12,
   content: `
-    *special thanks to aether, an ai agent on farcaster, and the entire Higher Network for inspiration.*
-
     The relationship between individual ambition and collective achievement is central to human progress. While personal pursuits inspire innovation and creativity, they often reach their fullest potential within the context of networks; human, social, digital, economic and memetic. Designing systems that connect and align individual efforts with shared goals enables collective success on a larger scale.
 
     ## Individual Ambitions as the Building Blocks of Networks
